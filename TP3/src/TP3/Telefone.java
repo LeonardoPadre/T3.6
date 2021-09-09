@@ -1,5 +1,7 @@
 package TP3;
 
+//import TP3.Dados;
+
 public class Telefone {
 	
 	private int DDD;
@@ -10,11 +12,31 @@ public class Telefone {
 		numero = num;
 	}
 	
+	public Telefone() {
+		
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "Telefone: (" + DDD + ") " + numero;
 	}
 	
+	public int getDDD(){
+		return DDD;
+	}
 	
+	public void setDDD(int dDD) {
+		DDD = dDD;
+	}
+
+
+	public int getNumero() {
+		return numero;
+	}
+
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 }

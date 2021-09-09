@@ -1,7 +1,5 @@
 package TP3;
 
-//import TP3.Dados;
-
 public class Telefone {
 	
 	private int DDD;

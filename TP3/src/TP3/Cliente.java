@@ -6,13 +6,22 @@ public class Cliente extends Pessoa {
 	private String email;
 	ArrayList<String> cliente = new ArrayList<String>();
 	
-	public Cliente(String n, String c) {
+	public Cliente(String n, String c, String e) {
 		nome = n;
 		CPF = c;
+		email = e;
 	}
 	
 	public String toString() {
 		return "Nome do cliente: " + cliente + " || CPF: " + CPF + " || Email: " + email;
+	}
+	
+	private void edit(String antigo, String novo) {
+		for(int i = 0; i < cliente.size(); i++) {
+			if(cliente.get(i) == antigo) {
+				cliente.set(i, novo);
+			}
+		}
 	}
 	
 	//CPF
@@ -21,11 +30,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public void editCPF(String cpf1, String cpf2) {
-		for(int i = 0; i < cliente.size(); i++) {
-			if(cliente.get(i) == cpf1) {
-				cliente.set(i, cpf2);
-			}
-		}
+		edit(cpf1, cpf2);
 	}
 	
 	//Nome
@@ -34,11 +39,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public void editNome(String nome1, String nome2) {
-		for(int i = 0; i < cliente.size(); i++) {
-			if(cliente.get(i) == nome1) {
-				cliente.set(i, nome2);
-			}
-		}
+		edit(nome1, nome2);
 	}
 	
 	//Email
@@ -47,11 +48,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public void editEmail(String email1, String email2) {
-		for(int i = 0; i < cliente.size(); i++) {
-			if(cliente.get(i) == email1) {
-				cliente.set(i, email2);
-			}
-		}
+		edit(email1, email2);
 	}
 	
 	//Telefone
@@ -60,11 +57,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public void editTelefone(String tel1, String tel2) {
-		for(int i = 0; i < cliente.size(); i++) {
-			if(cliente.get(i) == tel1) {
-				cliente.set(i, tel2);
-			}
-		}
+		edit(tel1, tel2);
 	}
 	
 	//Deletar todo cliente a partir do CPF
@@ -77,35 +70,3 @@ public class Cliente extends Pessoa {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

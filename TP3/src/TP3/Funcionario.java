@@ -22,7 +22,7 @@ public class Funcionario extends Pessoa {
 	
 	public String toString() {
 		return "Nome do funcionario: " + nome + " || Função: " + funcao + " || Contratação: " + dataDaContratacao +
-				" || Endereço: " + endereco + " || RG: " + RG + " || CPF: " + CPF + " || Gênero: " + genero;
+				"\n || Endereço: " + endereco + " || RG: " + RG + " || CPF: " + CPF + " || Gênero: " + genero;
 	}
 	
 	private void edit(String antigo, String novo) {

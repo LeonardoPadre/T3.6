@@ -8,17 +8,14 @@ public class Estoque {
 	private int quantidade;
 	ArrayList<String> estoque = new ArrayList<String>();
 	
-	public String toString() {
-		return "Código: " + codigo + " || Nome: " + nome + " || Quantidade: " + quantidade;
+	public Estoque(Produto c, Produto n, int qnt) {
+		codigo = c;
+		nome = n;
+		quantidade = qnt;
 	}
 	
-	private void edit(String antigocod, String novocod, String novonome) {
-		for(int i = 0; i < estoque.size(); i++) {
-			if(estoque.get(i) == antigocod) {
-				estoque.set(i, novocod);
-				estoque.set(i+1, novonome);
-			}
-		}
+	public String toString() {
+		return "Código: " + codigo + " || Nome: " + nome + " || Quantidade: " + quantidade;
 	}
 	
 	//Produto
@@ -28,18 +25,40 @@ public class Estoque {
 		estoque.add(nome);
 	}
 	
-	//Edita tudo a partir do código do produto
-	public void editProEst(String cod1, String cod2, String n1) {
-		edit(cod1, cod2, n1);
+	//Quantidade
+	public void addEstoque(int qnt) {
+		String qntt = Integer.toString(qnt);
+		estoque.add(qntt);
+	}
+	
+	//Edita quantidade
+	public void editEstoque(String codProduto, int qnt) {
+		for(int i = 0; i < estoque.size(); i++) {
+			if(estoque.get(i) == codProduto) {
+				String qntt = Integer.toString(qnt);
+				estoque.set(i+2, qntt);
+			}
+		}
+	}
+	
+	
+	//Edita codigo e nome
+	public void editProEst(String antCod, String nvCod, String nvNome) {
+		for(int i = 0; i < estoque.size(); i++) {
+			if(estoque.get(i) == antCod) {
+				estoque.set(i, nvCod);
+				estoque.set(i+1, nvNome);
+			}
+		}
 	}
 	
 	//Deletar
-		public void delProEst(String cod) {
-			for(int i = 0; i < estoque.size(); i++) {
-				if(estoque.get(i) == cod) {
-					for(int w = i; w < i + 2; w++)
-						estoque.remove(w);
-				}
+	public void delProEst(String cod) {
+		for(int i = 0; i < estoque.size(); i++) {
+			if(estoque.get(i) == cod) {
+				for(int w = i; w < i + 2; w++)
+					estoque.remove(w);
 			}
 		}
+	}
 }

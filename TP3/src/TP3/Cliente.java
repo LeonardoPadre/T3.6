@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Cliente extends Pessoa {
 	private String email;
+	private String nome;
 	ArrayList<String> cliente = new ArrayList<String>();
 	
 	public Cliente(String n, String c, String e) {
@@ -13,7 +14,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public String toString() {
-		return "Nome do cliente: " + cliente + " || CPF: " + CPF + " || Email: " + email;
+		return "Nome do cliente: " + nome + " || CPF: " + CPF + " || Email: " + email;
 	}
 	
 	private void edit(String antigo, String novo) {

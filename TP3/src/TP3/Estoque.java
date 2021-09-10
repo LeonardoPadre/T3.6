@@ -3,19 +3,19 @@ package TP3;
 import java.util.ArrayList;
 
 public class Estoque {
-	private Produto codigo;
-	private Produto nome;
+	private String codigo;
+	private String nome;
 	private int quantidade;
 	ArrayList<String> estoque = new ArrayList<String>();
 	
-	public Estoque(Produto c, Produto n, int qnt) {
+	public Estoque(String c, String n, int qnt) {
 		codigo = c;
 		nome = n;
 		quantidade = qnt;
 	}
 	
 	public String toString() {
-		return "Código: " + codigo + " || Nome: " + nome + " || Quantidade: " + quantidade;
+		return "Código do produto: " + codigo + " || Nome: " + nome + " || Quantidade: " + quantidade;
 	}
 	
 	//Produto

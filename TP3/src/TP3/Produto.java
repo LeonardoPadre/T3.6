@@ -24,8 +24,8 @@ public class Produto {
 	}
 	
 	public String toString() {
-		return "Código: " + codigo + " || Nome: " + nome + " || Preço: " + preco + " || Marca: " + marca + 
-				"\n || Descrição: " + descricao + " || Categoria: " + categoria + " || Gênero: " + genero;
+		return "Código do produto: " + codigo + " || Nome: " + nome + " || Preço: " + preco + " || Marca: " + marca + 
+				" || Descrição: " + descricao + " || Categoria: " + categoria + " || Gênero: " + genero;
 	}
 	
 	private void edit(String antigo, String novo) {
@@ -53,7 +53,7 @@ public class Produto {
 	public void editNome(String nome1, String nome2) {
 		edit(nome1, nome2);
 	}
-	
+
 	//Preço
 	public void addPreco(double preco) {
 		String p = Double.toString(preco);

@@ -3,9 +3,9 @@ package TP3;
 import java.util.ArrayList;
 
 public class Venda {
-	private Produto nomeP;
-	private Cliente nomeC;
-	private Funcionario nomeF;
+	private String nomeP;
+	private String nomeC;
+	private String nomeF;
 	private String codVenda;
 	private double custoFinal;
 	private int qntVendido;
@@ -14,10 +14,10 @@ public class Venda {
 	
 	public String toString() {
 		return "Venda: " + codVenda + " || " + qntVendido + " x " + nomeP + " || Valor: " + custoFinal +
-				"\n || Vendedor: " + nomeF + " || Cliente: " + nomeC;
+				" || Vendedor: " + nomeF + " || Cliente: " + nomeC;
 	}
 	
-	public Venda(String cv, int qv, Produto np, double cf, Funcionario nf, Cliente nc) {
+	public Venda(String cv, int qv, String np, double cf, String nf, String nc) {
 		codVenda = cv;
 		qntVendido = qv;
 		nomeP = np;
@@ -25,7 +25,17 @@ public class Venda {
 		nomeF = nf;
 		nomeC = nc;
 	}
+	
+	public Venda() {
+		
+	}
 
+	public void cadastrarVenda() {
+		addProdutoVendido(codVenda, qntVendido, nomeP);
+		addCliFun(nomeC, nomeF);
+		addValor(custoFinal);
+	}
+	
 	//Produto na venda
 	public void addProdutoVendido(String codVenda, int qntVendida, String nomeProduto) {
 		venda.add(codVenda);

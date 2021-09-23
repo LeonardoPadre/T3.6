@@ -6,7 +6,7 @@ import modelo.Cliente;
 public class ControleCliente {
 	public ArrayList<String> aux = new ArrayList<String>();
 	
-	public String[] getNomeProduto() {
+	public String[] getNomeCliente() {
 		for(int i = 0; i < Cliente.clienteN.size(); i++) {
 			aux.add(Cliente.clienteN.get(i));
 		}
@@ -19,7 +19,7 @@ public class ControleCliente {
 		return s;
 	}
 	
-	public String[] getProdutoN() {
+	public String[] getClienteN() {
 		String[] s = new String[Cliente.clienteN.size()];
 		for(int i = 0; i < Cliente.clienteN.size(); i++) {
 			s[i] = Cliente.clienteN.get(i);

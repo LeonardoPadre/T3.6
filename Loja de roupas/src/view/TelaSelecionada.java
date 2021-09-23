@@ -19,7 +19,10 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 	private JLabel titulo;
 	private JButton cadastroProduto;
 	private JButton refreshProduto;
+	private JButton cadastroCliente;
+	private JButton refreshCliente;
 	private JList<String> listaProdutosCadastrados;
+	private JList<String> listaClientesCadastrados;
 	
 	public void mostrarDados(int opc) {
 		switch(opc) {
@@ -55,6 +58,39 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			listaProdutosCadastrados.addListSelectionListener(this);
 			
 			break;
+		
+		case 2:
+			ControleCliente cc = new ControleCliente();
+			listaClientesCadastrados = new JList<String>(cc.getNomeCliente());
+			janela = new JFrame("Clientes");
+			titulo = new JLabel("Clientes Cadastrados");
+			cadastroCliente = new JButton("Cadastrar");
+			refreshCliente = new JButton("Refresh");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaClientesCadastrados.setBounds(20, 50, 350, 350);
+			listaClientesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaClientesCadastrados.setVisibleRowCount(5);
+			
+			cadastroCliente.setBounds(70, 420, 100, 30);
+			refreshCliente.setBounds(200, 420, 100, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaClientesCadastrados);
+			janela.add(cadastroCliente);
+			janela.add(refreshCliente);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			cadastroCliente.addActionListener(this);
+			refreshCliente.addActionListener(this);
+			listaClientesCadastrados.addListSelectionListener(this);
+			
+			break;
 		}
 	}
 	
@@ -62,6 +98,7 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		ControleProduto cp = new ControleProduto();
+		ControleCliente cc = new ControleCliente();
 		
 		if(src == cadastroProduto) {
 			new TelaDetalheProduto().inserirEditar(1, 0);
@@ -71,6 +108,15 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			listaProdutosCadastrados.setListData(cp.getProdutoN());
 			listaProdutosCadastrados.updateUI();
 		}
+		
+		if(src == cadastroCliente) {
+			new TelaDetalheCliente().inserirEditar(1, 0);
+		}
+		
+		if(src == refreshCliente) {
+			listaClientesCadastrados.setListData(cc.getClienteN());
+			listaClientesCadastrados.updateUI();
+		}
 	}
 	
 	//Captura eventos relacionados ao JList
@@ -79,6 +125,10 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 
 			if(e.getValueIsAdjusting() && src == listaProdutosCadastrados) {
 				new TelaDetalheProduto().inserirEditar(2, listaProdutosCadastrados.getSelectedIndex());
+			}
+			
+			if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
+				new TelaDetalheCliente().inserirEditar(2, listaClientesCadastrados.getSelectedIndex());
 			}
 		}
 	

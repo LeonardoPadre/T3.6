@@ -50,7 +50,11 @@ public class TelaMenu implements ActionListener {
 			new TelaSelecionada().mostrarDados(1);
 		}
 		
-		if(src == cliente || src == funcionario || src == venda) {
+		if(src == cliente) {
+			new TelaSelecionada().mostrarDados(2);
+		}
+		
+		if(src == funcionario || src == venda) {
 			JOptionPane.showMessageDialog(null, 
 					"Ainda precisam ser implementadas as funcionalidades", null, 
 					JOptionPane.INFORMATION_MESSAGE);

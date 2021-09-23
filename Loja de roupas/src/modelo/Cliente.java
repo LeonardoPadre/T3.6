@@ -21,7 +21,7 @@ public class Cliente extends Pessoa {
 	public static ArrayList<String> clienteE = new ArrayList<String>() {
 		private static final long serialVersionUID = 1L;
 		{
-			add("Brasilia"); add("Amapa"); add("Rio de Janeiro"); add("Roraima"); add("Goiania"); add("California"); add("Goiania"); add("Porto Alegre"); add("Recife"); add("Maranhão");
+			add("Carlos@gmail.com"); add("Magda@gmail.com"); add("James@gmail.com"); add("Lucas@gmail.com"); add("Leo@gmail.com"); add("Fabi@gmail.com"); add("Ricardo@gmail.com"); add("José@gmail.com"); add("Paulo@gmail.com"); add("Amanda@gmail.com");
 		}
 	};
 	public static ArrayList<String> clienteT = new ArrayList<String>() {
@@ -106,7 +106,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	//Deletar todo cliente a partir do CPF
-	public void delProduto(String cod) {
+	public void delCliente(String cod) {
 		for(int i = 0; i < clienteC.size(); i++) {
 			if(clienteC.get(i) == cod) {
 				clienteC.remove(i);

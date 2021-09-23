@@ -34,14 +34,13 @@ public class TelaDetalheProduto implements ActionListener {
 	int opcao;
 	
 	public void inserirEditar(int op, int pos) {
+		if (op == 1) s = "Cadastro de Produto";
+		if (op == 2) s = "Detalhe de Produto";
 		janela = new JFrame(s);
 		Produto p = new Produto();
 		
 		opcao = op;
 		posicao = pos;
-		
-		if (op == 1) s = "Cadastro de Produto";
-		if (op == 2) s = "Detalhe de Produto";
 		
 		if (op == 1) { //Sem dados
 			valorNome = new JTextField(25);

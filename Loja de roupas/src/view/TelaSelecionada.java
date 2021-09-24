@@ -21,8 +21,11 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 	private JButton refreshProduto;
 	private JButton cadastroCliente;
 	private JButton refreshCliente;
+	private JButton cadastroFunc;
+	private JButton refreshFunc;
 	private JList<String> listaProdutosCadastrados;
 	private JList<String> listaClientesCadastrados;
+	private JList<String> listaFuncionariosCadastrados;
 	
 	public void mostrarDados(int opc) {
 		switch(opc) {
@@ -91,6 +94,39 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			listaClientesCadastrados.addListSelectionListener(this);
 			
 			break;
+			
+		case 3:
+			ControleFuncionario cf = new ControleFuncionario();
+			listaFuncionariosCadastrados = new JList<String>(cf.getNomeFuncionario());
+			janela = new JFrame("Clientes");
+			titulo = new JLabel("Clientes Cadastrados");
+			cadastroFunc = new JButton("Cadastrar");
+			refreshFunc = new JButton("Refresh");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaFuncionariosCadastrados.setBounds(20, 50, 350, 350);
+			listaFuncionariosCadastrados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaFuncionariosCadastrados.setVisibleRowCount(5);
+			
+			cadastroFunc.setBounds(70, 420, 100, 30);
+			refreshFunc.setBounds(200, 420, 100, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaFuncionariosCadastrados);
+			janela.add(cadastroFunc);
+			janela.add(refreshFunc);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			cadastroFunc.addActionListener(this);
+			refreshFunc.addActionListener(this);
+			listaFuncionariosCadastrados.addListSelectionListener(this);
+			
+			break;
 		}
 	}
 	
@@ -99,6 +135,7 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 		Object src = e.getSource();
 		ControleProduto cp = new ControleProduto();
 		ControleCliente cc = new ControleCliente();
+		ControleFuncionario cf = new ControleFuncionario();
 		
 		if(src == cadastroProduto) {
 			new TelaDetalheProduto().inserirEditar(1, 0);
@@ -117,6 +154,15 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			listaClientesCadastrados.setListData(cc.getClienteN());
 			listaClientesCadastrados.updateUI();
 		}
+		
+		if(src == cadastroFunc) {
+			new TelaDetalheFuncionario().inserirEditar(1, 0);
+		}
+		
+		if(src == refreshFunc) {
+			listaFuncionariosCadastrados.setListData(cf.getFuncionarioN());
+			listaFuncionariosCadastrados.updateUI();
+		}
 	}
 	
 	//Captura eventos relacionados ao JList
@@ -129,6 +175,10 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			
 			if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
 				new TelaDetalheCliente().inserirEditar(2, listaClientesCadastrados.getSelectedIndex());
+			}
+			
+			if(e.getValueIsAdjusting() && src == listaFuncionariosCadastrados) {
+				new TelaDetalheFuncionario().inserirEditar(2, listaFuncionariosCadastrados.getSelectedIndex());
 			}
 		}
 	

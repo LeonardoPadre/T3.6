@@ -11,6 +11,7 @@ public class TelaMenu implements ActionListener {
 	private static JButton funcionario = new JButton("Funcionário");
 	private static JButton produto = new JButton("Produto");
 	private static JButton venda = new JButton("Venda");
+	private static JButton estoque = new JButton("Estoque");
 	
 	public TelaMenu() {
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -19,6 +20,7 @@ public class TelaMenu implements ActionListener {
 		funcionario.setBounds(140, 150, 100, 30);
 		produto.setBounds(140, 50, 100, 30);
 		venda.setBounds(140, 200, 100, 30);
+		estoque.setBounds(140, 250, 100, 30);
 		
 		janela.setLayout(null);
 		
@@ -27,8 +29,9 @@ public class TelaMenu implements ActionListener {
 		janela.add(funcionario);
 		janela.add(produto);
 		janela.add(venda);
+		janela.add(estoque);
 		
-		janela.setSize(400, 300);
+		janela.setSize(400, 400);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 	}
@@ -41,6 +44,7 @@ public class TelaMenu implements ActionListener {
 		funcionario.addActionListener(menu);
 		produto.addActionListener(menu);
 		venda.addActionListener(menu);
+		estoque.addActionListener(menu);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -54,7 +58,11 @@ public class TelaMenu implements ActionListener {
 			new TelaSelecionada().mostrarDados(2);
 		}
 		
-		if(src == funcionario || src == venda) {
+		if(src == funcionario) {
+			new TelaSelecionada().mostrarDados(3);
+		}
+		
+		if(src == venda || src == estoque) {
 			JOptionPane.showMessageDialog(null, 
 					"Ainda precisam ser implementadas as funcionalidades", null, 
 					JOptionPane.INFORMATION_MESSAGE);

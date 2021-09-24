@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import modelo.Cliente;
 
 public class TelaDetalheCliente implements ActionListener {
@@ -72,7 +73,7 @@ public class TelaDetalheCliente implements ActionListener {
 		janela.add(labelEmail);
 		janela.add(valorEmail);
 		
-janela.add(botaoSalvar);
+		janela.add(botaoSalvar);
 		
 		janela.setLayout(null);
 		

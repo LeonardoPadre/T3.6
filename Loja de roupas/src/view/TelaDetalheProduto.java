@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import modelo.Estoque;
 import modelo.Produto;
 
 public class TelaDetalheProduto implements ActionListener {
@@ -126,6 +128,7 @@ public class TelaDetalheProduto implements ActionListener {
 				Produto.produtoD.add(valorDes.getText());
 				Produto.produtoCa.add(valorCat.getText());
 				Produto.produtoG.add(valorGen.getText());
+				Estoque.estoque.add(0);
 			}
 			if(opcao == 2) { //Editar
 				p.editNome(p.getNome(posicao), valorNome.getText());

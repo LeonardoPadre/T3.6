@@ -23,9 +23,13 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 	private JButton refreshCliente;
 	private JButton cadastroFunc;
 	private JButton refreshFunc;
+	//private JButton cadastroVenda;
+	//private JButton refreshVenda;
+	private JButton refreshEst;
 	private JList<String> listaProdutosCadastrados;
 	private JList<String> listaClientesCadastrados;
 	private JList<String> listaFuncionariosCadastrados;
+	private JList<String> listaEstoque;
 	
 	public void mostrarDados(int opc) {
 		switch(opc) {
@@ -99,7 +103,7 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			ControleFuncionario cf = new ControleFuncionario();
 			listaFuncionariosCadastrados = new JList<String>(cf.getNomeFuncionario());
 			janela = new JFrame("Clientes");
-			titulo = new JLabel("Clientes Cadastrados");
+			titulo = new JLabel("Funcionários Cadastrados");
 			cadastroFunc = new JButton("Cadastrar");
 			refreshFunc = new JButton("Refresh");
 			
@@ -125,6 +129,38 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			cadastroFunc.addActionListener(this);
 			refreshFunc.addActionListener(this);
 			listaFuncionariosCadastrados.addListSelectionListener(this);
+			
+			break;
+		
+		case 4:
+			break;
+			
+		case 5:
+			ControleProduto cp2 = new ControleProduto();
+			listaEstoque = new JList<String>(cp2.getNomeProduto());
+			janela = new JFrame("Estoque");
+			titulo = new JLabel("Selecione um produto");
+			refreshEst = new JButton("Refresh");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaEstoque.setBounds(20, 50, 350, 350);
+			listaEstoque.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaEstoque.setVisibleRowCount(5);
+			
+			refreshEst.setBounds(140, 420, 100, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaEstoque);
+			janela.add(refreshEst);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			refreshEst.addActionListener(this);
+			listaEstoque.addListSelectionListener(this);
 			
 			break;
 		}
@@ -163,6 +199,11 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			listaFuncionariosCadastrados.setListData(cf.getFuncionarioN());
 			listaFuncionariosCadastrados.updateUI();
 		}
+
+		if(src == refreshEst) {
+			listaEstoque.setListData(cp.getProdutoN());
+			listaEstoque.updateUI();
+		}
 	}
 	
 	//Captura eventos relacionados ao JList
@@ -179,6 +220,10 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 			
 			if(e.getValueIsAdjusting() && src == listaFuncionariosCadastrados) {
 				new TelaDetalheFuncionario().inserirEditar(2, listaFuncionariosCadastrados.getSelectedIndex());
+			}
+			
+			if(e.getValueIsAdjusting() && src == listaEstoque) {
+				new TelaDetalheEstoque().inserirEditar(listaEstoque.getSelectedIndex());
 			}
 		}
 	

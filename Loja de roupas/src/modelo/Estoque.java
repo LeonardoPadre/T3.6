@@ -6,7 +6,12 @@ public class Estoque {
 	private String codigo;
 	private String nome;
 	private int quantidade;
-	ArrayList<String> estoque = new ArrayList<String>();
+	public static ArrayList<Integer> estoque = new ArrayList<Integer>() {
+		private static final long serialVersionUID = 1L;
+		{
+			add(9); add(100); add(100); add(100); add(100); add(100); add(1000); add(9999); add(11); add(1);
+		}
+	};
 	
 	public Estoque(String c, String n, int qnt) {
 		codigo = c;
@@ -14,51 +19,27 @@ public class Estoque {
 		quantidade = qnt;
 	}
 	
+	public Estoque() {
+		
+	}
+	
 	public String toString() {
 		return "Código do produto: " + codigo + " || Nome: " + nome + " || Quantidade: " + quantidade;
 	}
 	
-	//Produto
-	public void addProEst(int cod, String nome) {
-		String codd = Integer.toString(cod);
-		estoque.add(codd);
-		estoque.add(nome);
+	public Integer getEstoque(int i) {
+		return estoque.get(i);
 	}
 	
-	//Quantidade
 	public void addEstoque(int qnt) {
-		String qntt = Integer.toString(qnt);
-		estoque.add(qntt);
+		estoque.add(qnt);
 	}
 	
-	//Edita quantidade
-	public void editEstoque(String codProduto, int qnt) {
-		for(int i = 0; i < estoque.size(); i++) {
-			if(estoque.get(i) == codProduto) {
-				String qntt = Integer.toString(qnt);
-				estoque.set(i+2, qntt);
-			}
-		}
+	public void editEstoque(int i, int qnt) {
+		estoque.set(i, qnt);
 	}
 	
-	
-	//Edita codigo e nome
-	public void editProEst(String antCod, String nvCod, String nvNome) {
-		for(int i = 0; i < estoque.size(); i++) {
-			if(estoque.get(i) == antCod) {
-				estoque.set(i, nvCod);
-				estoque.set(i+1, nvNome);
-			}
-		}
-	}
-	
-	//Deletar
-	public void delProEst(String cod) {
-		for(int i = 0; i < estoque.size(); i++) {
-			if(estoque.get(i) == cod) {
-				for(int w = i; w < i + 2; w++)
-					estoque.remove(w);
-			}
-		}
+	public void delEstoque(int i) {
+		estoque.remove(i);
 	}
 }

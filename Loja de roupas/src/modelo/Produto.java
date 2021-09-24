@@ -188,6 +188,7 @@ public class Produto {
 				produtoD.remove(i);
 				produtoCa.remove(i);
 				produtoG.remove(i);
+				Estoque.estoque.remove(i);
 			}
 		}
 	}

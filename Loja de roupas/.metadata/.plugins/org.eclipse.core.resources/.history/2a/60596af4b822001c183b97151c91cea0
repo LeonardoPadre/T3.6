@@ -1,0 +1,18 @@
+package view;
+
+import java.util.ArrayList;
+
+public class Teste {
+	public static ArrayList<String> codigoVenda = new ArrayList<String>() { //Código da Venda, Cliente, Funcionario, Produto, Quantidade, Custo Final, ... , * , Código da Venda 2, ...
+		private static final long serialVersionUID = 1L;
+		{
+			add("V00001"); add("V00002"); add("V00003"); add("V00004"); add("V00005"); add("V00006");
+		}
+	};
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

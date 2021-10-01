@@ -1,0 +1,60 @@
+package view;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import modelo.Produto;
+
+public class TelaQuantidade implements ActionListener {
+	private JFrame janela = new JFrame();
+	private JLabel titulo;
+	private JTextField qnt;
+	private JButton botaoAdicionar = new JButton("Adicionar");
+	
+	int posicao;
+	int opcao;
+	
+	public void cadastroQuantidade(int op, int pos) {
+		posicao = pos;
+		opcao = op;
+		
+		if(op == 5) { //Adiciona a quantidade do produto selecionado
+			titulo = new JLabel("Digite a Quantidade");
+			qnt = new JTextField(25);
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			
+			qnt.setBounds(90, 70, 180, 25);
+			botaoAdicionar.setBounds(100, 120, 115, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(botaoAdicionar);
+			janela.add(qnt);
+			
+			janela.setSize(400, 200);
+			janela.setVisible(true);
+			
+			botaoAdicionar.addActionListener(this);
+			
+		}
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		
+		if(src == botaoAdicionar) {
+			TelaCadastroVenda.auxiliar.add(Produto.produtoN.get(posicao));
+			TelaCadastroVenda.auxiliar.add(qnt.getText());
+			janela.dispose();
+		}
+		
+	}
+}

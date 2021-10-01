@@ -1,0 +1,11 @@
+package controle;
+
+import java.util.ArrayList;
+
+public class ControleVenda {
+	public ArrayList<String> aux = new ArrayList<String>();
+	
+	public String[] getCodVenda() {
+		
+	}
+}

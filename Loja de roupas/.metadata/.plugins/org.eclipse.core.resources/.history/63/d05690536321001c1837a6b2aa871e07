@@ -1,0 +1,17 @@
+package controle;
+
+import java.util.ArrayList;
+
+import modelo.Venda;
+
+public class ControleVenda {
+	public ArrayList<String> aux = new ArrayList<String>();
+	
+	public String[] getCodVenda() {
+		for(int i = 0; i < Venda.Venda.size(); i++) {
+			if(Venda.Venda.get(i) == "*") {
+				aux.add(Venda.Venda.get(i+1));
+			}
+		}
+	}
+}

@@ -1,0 +1,146 @@
+package view;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import controle.ControleFuncionario;
+import controle.ControleProduto;
+import modelo.Cliente;
+import modelo.Funcionario;
+import modelo.Venda;
+
+public class TelaCadastroVenda implements ActionListener, ListSelectionListener{
+	private JFrame janela = new JFrame();
+	private JLabel titulo;
+	private JTextField cod;
+	private JButton botaoConcluir = new JButton("Concluir");
+	private JButton botaoProximo = new JButton("Proximo");
+	private JList<String> listaFuncionariosCadastrados;
+	private JList<String> listaProdutosCadastrados;
+	
+	ArrayList<String> auxiliar = new ArrayList<String>();
+	
+	int posicao;
+	int opcao;
+	
+	public void cadastroVenda(int op, int pos) {
+		posicao = pos;
+		opcao = op;
+		
+		if(op == 3) { //Selecione um funcionario
+			auxiliar.add(Cliente.clienteN.get(pos));
+			ControleFuncionario cf = new ControleFuncionario();
+			listaFuncionariosCadastrados = new JList<String>(cf.getNomeFuncionario());
+			titulo = new JLabel("Selecione um Funcionário");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaFuncionariosCadastrados.setBounds(20, 50, 350, 350);
+			listaFuncionariosCadastrados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaFuncionariosCadastrados.setVisibleRowCount(5);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaFuncionariosCadastrados);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			listaFuncionariosCadastrados.addListSelectionListener(this);
+		}
+		
+		else if(op == 4) { //Selecione um produto
+			auxiliar.add(Funcionario.funcionarioN.get(pos));
+			ControleProduto cp = new ControleProduto();
+			listaProdutosCadastrados = new JList<String>(cp.getNomeProduto());
+			titulo = new JLabel("Selecione o Produto");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaProdutosCadastrados.setBounds(20, 50, 350, 350);
+			listaProdutosCadastrados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaProdutosCadastrados.setVisibleRowCount(5);
+			
+			botaoProximo.setBounds(130, 420, 115, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaProdutosCadastrados);
+			janela.add(botaoProximo);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			botaoProximo.addActionListener(this);
+			listaProdutosCadastrados.addListSelectionListener(this);
+		}
+		
+		else if(op == 6) {
+			titulo = new JLabel("Digite o Código da Venda");
+			cod = new JTextField(25);
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			
+			cod.setBounds(90, 70, 180, 25);
+			botaoConcluir.setBounds(125, 120, 115, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(botaoConcluir);
+			janela.add(cod);
+			
+			janela.setSize(400, 200);
+			janela.setVisible(true);
+			
+			botaoConcluir.addActionListener(this);
+		}
+	}
+	
+	
+	
+	public void valueChanged(ListSelectionEvent e) {
+		Object src = e.getSource();
+		
+		if(e.getValueIsAdjusting() && src == listaFuncionariosCadastrados) {
+			new TelaCadastroVenda().cadastroVenda(4, listaFuncionariosCadastrados.getSelectedIndex());
+			janela.dispose();
+		}
+		
+		if(e.getValueIsAdjusting() && src == listaProdutosCadastrados) {
+			new TelaQuantidade().cadastroQuantidade(5, listaProdutosCadastrados.getSelectedIndex());
+		}
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		
+		if(src == botaoProximo) {
+			new TelaCadastroVenda().cadastroVenda(6, 0);
+			janela.dispose();
+		}
+		
+		if(src == botaoConcluir) {
+			Venda.codigoVenda.add(cod.getText());
+			Venda.vendas.add(auxiliar);
+			auxiliar.clear();
+			janela.dispose();
+		}
+		
+	}
+
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Leo\Desktop\UNB\Loja de roupas\.metadata\.plugins\org.eclipse.jdt.core
+1210658807.index
+3867232866.index
+4099514596.index

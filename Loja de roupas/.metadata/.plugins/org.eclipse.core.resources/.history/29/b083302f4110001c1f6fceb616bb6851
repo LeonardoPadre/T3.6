@@ -1,0 +1,11 @@
+package TP3;
+import java.util.ArrayList;
+
+public class Dados {
+	
+	ArrayList<Integer> preco = new ArrayList<Integer>();
+	
+	public void produto(int preco) {
+		
+	}
+}

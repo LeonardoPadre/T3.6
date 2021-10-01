@@ -1,0 +1,162 @@
+package view;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import controle.ControleCliente;
+import controle.ControleFuncionario;
+import controle.ControleVenda;
+import modelo.Venda;
+
+public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
+	
+	private JFrame janela = new JFrame();
+	private JLabel titulo;
+	private JLabel produto = new JLabel("Produto");
+	private JLabel quantidade = new JLabel("Quantidade");
+	private JLabel vendedor = new JLabel("Vendedor: ");
+	private JLabel comprador = new JLabel("Comprador: ");
+	private JLabel funcionario;
+	private JLabel cliente;
+	private JLabel preco;
+	private JButton botaoProximo = new JButton("Proximo");
+	private JButton botaoAdicionar = new JButton("Adicionar");
+	private JButton botaoExcluir = new JButton("Excluir");
+	private JList<String> listaProdutosVendidos;
+	private JList<String> listaClientesCadastrados;
+	private JList<String> listaQuantidade;
+	private JList<String> listaFuncionariosCadastrados;
+	
+	
+	int posicao;
+	int opcao;
+	
+	public void inserirEditar(int op, int pos) {
+		
+		opcao = op;
+		posicao = pos;
+		
+		if(op == 1) { //Novo
+			ControleCliente cc = new ControleCliente();
+			listaClientesCadastrados = new JList<String>(cc.getNomeCliente());
+			titulo = new JLabel("Selecione um Cliente");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaClientesCadastrados.setBounds(20, 50, 350, 350);
+			listaClientesCadastrados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaClientesCadastrados.setVisibleRowCount(5);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaClientesCadastrados);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			listaClientesCadastrados.addListSelectionListener(this);
+			
+		}
+		
+		else if(op == 2) { //Mostra a nota
+			ControleVenda cv = new ControleVenda();
+			Venda v = new Venda();
+			listaProdutosVendidos = new JList<String>(cv.getProVenda(pos));
+			listaQuantidade = new JList<String>(cv.getQuantidade(pos));
+			funcionario = new JLabel(v.getFuncionarioVenda(pos));
+			cliente = new JLabel(v.getClienteVenda(pos));
+			preco = new JLabel("R$ " + v.getPrecoFinal(pos));
+			janela = new JFrame("Nota");
+			titulo = new JLabel("NOTA");
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			preco.setFont(new Font("Arial", Font.BOLD, 15));
+			titulo.setBounds(165, 10, 250, 30);
+			
+			produto.setBounds(100, 50, 150, 25);
+			quantidade.setBounds(290, 50, 150, 25);
+			listaProdutosVendidos.setBounds(20, 90, 200, 200);
+			listaQuantidade.setBounds(300, 90, 50, 200);
+			
+			vendedor.setBounds(30, 300, 150, 25);
+			comprador.setBounds(30, 320, 150, 25);
+			funcionario.setBounds(180, 300, 150, 25);
+			cliente.setBounds(180, 320, 150, 25);
+			
+			preco.setBounds(150, 370, 250, 30);
+			botaoExcluir.setBounds(130, 420, 115, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(produto);
+			janela.add(quantidade);
+			janela.add(listaProdutosVendidos);
+			janela.add(listaQuantidade);
+			janela.add(vendedor);
+			janela.add(comprador);
+			janela.add(funcionario);
+			janela.add(cliente);
+			janela.add(preco);
+			janela.add(botaoExcluir);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			botaoExcluir.addActionListener(this);
+		}
+		
+		else if(op == 3) {
+			ControleFuncionario cf = new ControleFuncionario();
+			listaFuncionariosCadastrados = new JList<String>(cf.getNomeFuncionario());
+			titulo = new JLabel("Selecione um Funcionário");
+			
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(90, 10, 250, 30);
+			listaFuncionariosCadastrados.setBounds(20, 50, 350, 350);
+			listaFuncionariosCadastrados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			listaFuncionariosCadastrados.setVisibleRowCount(5);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(listaFuncionariosCadastrados);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			listaFuncionariosCadastrados.addListSelectionListener(this);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		Venda v = new Venda();
+		
+		if(src == botaoExcluir) {
+			v.delVenda(posicao);
+			janela.dispose();
+		}
+		
+	}
+
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

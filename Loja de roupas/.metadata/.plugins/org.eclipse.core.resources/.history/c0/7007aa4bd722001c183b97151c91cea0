@@ -1,0 +1,92 @@
+package view;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import controle.ControleVenda;
+import modelo.Venda;
+
+public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
+	
+	private JFrame janela = new JFrame();
+	private JLabel titulo = new JLabel("NOTA");
+	private JLabel produto = new JLabel("Produto");
+	private JLabel quantidade = new JLabel("Quantidade");
+	private JButton botaoProximo = new JButton("Proximo");
+	private JButton botaoAdicionar = new JButton("Adicionar");
+	private JButton botaoExcluir = new JButton("Excluir");
+	private JList<String> listaProdutosVendidos;
+	private JList<String> listaQuantidade;
+	
+	
+	
+	int posicao;
+	int opcao;
+	
+	public void inserirEditar(int op, int pos) {
+		
+		opcao = op;
+		posicao = pos;
+		
+		if(op == 1) { //Novo
+			
+		}
+		
+		else if(op == 2) { //Já cadastrado
+			ControleVenda cv = new ControleVenda();
+			listaProdutosVendidos = new JList<String>(cv.getProVenda(pos));
+			listaQuantidade = new JList<String>(cv.getQuantidade(pos));
+			janela = new JFrame("Nota");
+			titulo.setFont(new Font("Arial", Font.BOLD, 20));
+			titulo.setBounds(100, 10, 250, 30);
+			produto.setBounds(100, 50, 150, 25);
+			quantidade.setBounds(290, 50, 150, 25);
+			listaProdutosVendidos.setBounds(20, 90, 200, 200);
+			listaQuantidade.setBounds(300, 90, 50, 200);
+			botaoExcluir.setBounds(200, 420, 115, 30);
+			
+			janela.setLayout(null);
+			
+			janela.add(titulo);
+			janela.add(produto);
+			janela.add(quantidade);
+			janela.add(listaProdutosVendidos);
+			janela.add(listaQuantidade);
+			janela.add(botaoExcluir);
+			
+			janela.setSize(400, 500);
+			janela.setVisible(true);
+			
+			botaoExcluir.addActionListener(this);
+		}
+	}
+	
+	
+	
+	
+	
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		Venda v = new Venda();
+		
+		if(src == botaoExcluir) {
+			v.delVenda(posicao);
+			janela.dispose();
+		}
+		
+	}
+
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

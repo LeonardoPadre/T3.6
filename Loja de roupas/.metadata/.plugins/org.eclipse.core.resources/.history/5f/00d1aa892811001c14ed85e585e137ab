@@ -1,0 +1,111 @@
+package TP3;
+
+import java.util.ArrayList;
+
+public class Funcionario extends Pessoa {
+	private String RG;
+	private String dataDaContratacao;
+	private String endereco;
+	private String funcao;
+	private String genero;
+	ArrayList<String> funcionario = new ArrayList<String>();
+	
+	public Funcionario(String n, String c) {
+		nome = n;
+		CPF = c;
+	}
+	
+	public String toString() {
+		return "Nome do funcionario" + ": " + funcionario + " || Função: " + funcao + " || Contratação: " + dataDaContratacao;
+	}
+	
+	//CPF
+	public void addCPF(String cpf) {
+		funcionario.add(cpf);
+	}
+	
+	public void editCPF(String cpf1, String cpf2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == cpf1) {
+				funcionario.set(i, cpf2);
+			}
+		}
+	}
+	
+	//RG
+	public void addRG(String rg) {
+		funcionario.add(rg);
+	}
+	
+	public void editRG(String rg1, String rg2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == rg1) {
+				funcionario.set(i, rg2);
+			}
+		}
+	}
+	
+	//Nome
+	public void addNome(String nome) {
+		funcionario.add(nome);
+	}
+	
+	public void editNome(String nome1, String nome2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == nome1) {
+				funcionario.set(i, nome2);
+			}
+		}
+	}
+	
+	//Telefone
+	public void addTelefone(String telefone) {
+		funcionario.add(telefone);
+	}
+	
+	public void editTelefone(String tel1, String tel2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == tel1) {
+				funcionario.set(i, tel2);
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

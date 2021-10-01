@@ -1,0 +1,40 @@
+package controle;
+
+
+import java.util.ArrayList;
+
+
+import modelo.Venda;
+
+public class ControleVenda {
+	public ArrayList<String> aux = new ArrayList<String>();
+	
+	public String[] getCodVenda() {
+		for(int i = 0; i < Venda.venda.size(); i++) {
+			if(Venda.venda.get(i) == "*") {
+				if(Venda.venda.size() > i + 1) {
+					aux.add(Venda.venda.get(i+1));
+				}
+			}
+		}
+		
+		String[] s = new String[aux.size()];
+		for(int i = 0; i < aux.size(); i++) {
+			s[i] = aux.get(i);
+		}
+		
+		return s;
+	}
+	
+	public String[] getProVenda(String cod) {
+		Venda v = new Venda();
+		aux2.addAll(v.getProdutosVendidos(cod));
+		
+		String[] s = new String[aux2.size()];
+		for(int i = 0; i < aux2.size(); i++) {
+			s[i] = aux2.get(i);
+		}
+		
+		return s;
+	}
+}

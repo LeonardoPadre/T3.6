@@ -1,0 +1,64 @@
+package TP3;
+
+import java.util.ArrayList;
+
+public class Produto {
+	//private String fotoDoProduto;
+	private double preco;
+	private String nome;
+	private String descricao;
+	private String marca;
+	private String codigo;
+	private String genero;
+	private String categoria;
+	ArrayList<String> produto = new ArrayList<String>();
+	
+	public Produto(String co, String n, double p, String m, String d, String ca, String g) {
+		codigo = co;
+		nome = n;
+		preco = p;
+		marca = m;
+		descricao = d;
+		categoria = d;
+		genero = g;
+	}
+	
+	public String toString() {
+		return "Código: " + codigo + " || Nome: " + nome + " || Preço: " + preco + " || Marca: " + marca + 
+				"\n || Descrição: " + descricao + " || Categoria: " + categoria + " || Gênero: " + genero;
+	}
+	
+	private void edit(String antigo, String novo) {
+		for(int i = 0; i < produto.size(); i++) {
+			if(produto.get(i) == antigo) {
+				produto.set(i, novo);
+			}
+		}
+	}
+	
+	//Código
+	public void addCodigo(String cod) {
+		produto.add(cod);
+	}
+	
+	public void editCodigo(String cod1, String cod2) {
+		for(int i = 0; i < produto.size(); i++) {
+			if(produto.get(i) == cod1) {
+				produto.set(i, cod2);
+			}
+		}
+	}
+	
+	//Nome
+	public void addNome(String nome) {
+		produto.add(nome);
+	}
+	
+	public void editNome(String nome1, String nome2) {
+		for(int i = 0; i < produto.size(); i++) {
+			if(produto.get(i) == nome1) {
+				produto.set(i, nome2);
+			}
+		}
+	}
+}

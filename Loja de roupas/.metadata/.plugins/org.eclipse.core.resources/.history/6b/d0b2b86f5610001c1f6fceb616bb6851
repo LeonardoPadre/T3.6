@@ -1,0 +1,35 @@
+package TP3;
+import java.util.ArrayList;
+
+public class Dados {
+	
+	//Produto
+		ArrayList<String> produto = new ArrayList<String>();
+		public void produto(int preco, String nome, String descProduto, String marca, int codigo, String genero, String categoria) {
+			
+		}
+		
+	//Estoque
+		ArrayList<String> estoque = new ArrayList<String>();
+		public void estoque(String produto, int quantidade) {
+			
+		}
+		
+	//Funcionario
+		ArrayList<String> funcionario = new ArrayList<String>();
+		public void funcionario(int rg, String dataDaContratacao, String endereco, String funcao, String genero, String nome, int cpf, int ddd, int num) {
+			
+		}
+		
+	//Cliente
+		ArrayList<String> cliente = new ArrayList<String>();
+		public void cliente(String email, String nome, int cpf, int ddd, int num) {
+			
+		}
+		
+	//Venda
+		ArrayList<String> venda = new ArrayList<String>();
+		public void venda(String produto, int qntVendida, int custoFinal, String cliente, String funcionario) {
+			
+		}
+}

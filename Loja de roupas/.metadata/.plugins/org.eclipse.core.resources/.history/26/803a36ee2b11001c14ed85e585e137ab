@@ -1,0 +1,168 @@
+package TP3;
+
+import java.util.ArrayList;
+
+public class Funcionario extends Pessoa {
+	private String RG;
+	private String dataDaContratacao;
+	private String endereco;
+	private String funcao;
+	private String genero;
+	ArrayList<String> funcionario = new ArrayList<String>();
+	
+	public Funcionario(String n, String f, String d, String e, String r, String c, String g) {
+		nome = n;
+		funcao = f;
+		dataDaContratacao = d;
+		endereco = e;
+		RG = r;
+		CPF = c;
+		genero = g;
+	}
+	
+	public String toString() {
+		return "Nome do funcionario" + ": " + nome + " || Função: " + funcao + " || Contratação: " + dataDaContratacao +
+				" || Endereço: " + endereco + " || RG: " + RG + " || CPF: " + CPF + " || Gênero: " + genero;
+	}
+	
+	//CPF
+	public void addCPF(String cpf) {
+		funcionario.add(cpf);
+	}
+	
+	public void editCPF(String cpf1, String cpf2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == cpf1) {
+				funcionario.set(i, cpf2);
+			}
+		}
+	}
+	
+	//RG
+	public void addRG(String rg) {
+		funcionario.add(rg);
+	}
+	
+	public void editRG(String rg1, String rg2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == rg1) {
+				funcionario.set(i, rg2);
+			}
+		}
+	}
+	
+	//Nome
+	public void addNome(String nome) {
+		funcionario.add(nome);
+	}
+	
+	public void editNome(String nome1, String nome2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == nome1) {
+				funcionario.set(i, nome2);
+			}
+		}
+	}
+	
+	//Telefone
+	public void addTelefone(String telefone) {
+		funcionario.add(telefone);
+	}
+	
+	public void editTelefone(String tel1, String tel2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == tel1) {
+				funcionario.set(i, tel2);
+			}
+		}
+	}
+	
+	//Endereço
+	public void addEnd(String end) {
+		funcionario.add(end);
+	}
+	
+	public void editEnd(String end1, String end2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == end1) {
+				funcionario.set(i, end2);
+			}
+		}
+	}
+	
+	//Função
+	public void addFunc(String fun) {
+		funcionario.add(fun);
+	}
+	
+	public void editFunc(String fun1, String fun2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == fun1) {
+				funcionario.set(i, fun2);
+			}
+		}
+	}
+	
+	//Data da Contratação
+	public void addDataContratacao(String data) {
+		funcionario.add(data);
+	}
+	
+	public void editDataContratacao(String data1, String data2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == data1) {
+				funcionario.set(i, data2);
+			}
+		}
+	}
+	
+	//Gênero
+	public void addGenero(String genero) {
+		funcionario.add(genero);
+	}
+	
+	public void editGenero(String genero1, String genero2) {
+		for(int i = 0; i < funcionario.size(); i++) {
+			if(funcionario.get(i) == genero1) {
+				funcionario.set(i, genero2);
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

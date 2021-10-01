@@ -1,0 +1,8 @@
+package TP3;
+
+public class Dados {
+	
+	public int produto(int preco) {
+		return preco;
+	}
+}

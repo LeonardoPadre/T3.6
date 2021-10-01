@@ -1,0 +1,11 @@
+import java.util.Scanner;
+package TP3;
+
+public class Dados {
+	
+	ArrayList<Integer> preco = new ArrayList<Integer>();
+	
+	public void produto(int preco) {
+		
+	}
+}

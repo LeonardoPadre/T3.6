@@ -1,0 +1,15 @@
+package view;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class TelaDetalheEstoque implements ActionListener {
+	private JFrame janela;
+	private JLabel labelNome = new JLabel("Nome: ");
+	private JTextField valorNome;
+	private JLabel labelPreco = new JLabel("Preço: ");
+	private JTextField valorPreco;
+	private JLabel labelMarca = new JLabel("Marca: ");
+	private JTextField valorMarca;
+}

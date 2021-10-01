@@ -1,0 +1,37 @@
+package view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+public class TelaCadastroVenda implements ActionListener, ListSelectionListener{
+	private JFrame janela = new JFrame();
+	private JLabel titulo;
+	private JTextField qnt;
+	private JButton botaoProximo = new JButton("Proximo");
+	private JButton botaoAdicionar = new JButton("Adicionar");
+	private JButton botaoExcluir = new JButton("Excluir");
+	private JList<String> listaQuantidade;
+	private JList<String> listaFuncionariosCadastrados;
+	private JList<String> listaProdutosCadastrados;
+	
+	
+	
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

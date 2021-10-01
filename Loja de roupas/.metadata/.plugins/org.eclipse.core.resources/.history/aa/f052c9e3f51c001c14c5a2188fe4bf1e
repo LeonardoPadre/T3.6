@@ -1,0 +1,45 @@
+package view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import modelo.Produto;
+
+public class TelaDetalheEstoque implements ActionListener {
+	private JFrame janela;
+	private JLabel labelNome = new JLabel("Nome: ");
+	private JTextField valorNome;
+	private JLabel labelCodigo = new JLabel("Código do produto: ");
+	private JTextField valorCodigo;
+	private JLabel labelQuantidade = new JLabel("Quantidade: ");
+	private JTextField valorQuantidade;
+	private String s;
+	
+	int posicao;
+	int opcao;
+	
+	public void inserirEditar(int op, int pos) {
+		if (op == 1) s = "Cadastro de Produto";
+		if (op == 2) s = "Detalhe de Produto";
+		janela = new JFrame(s);
+		Produto p = new Produto();
+		
+		opcao = op;
+		posicao = pos;
+		
+		if (op == 1) { //Sem dados
+			valorNome = new JTextField(25);
+			valorCodigo = new JTextField(25);
+			valorQuantidade = new JTextField(25);
+		}
+	
+	}
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

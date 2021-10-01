@@ -1,0 +1,23 @@
+package view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class TelaDetalheEstoque implements ActionListener {
+	private JFrame janela;
+	private JLabel labelNome = new JLabel("Nome: ");
+	private JTextField valorNome;
+	private JLabel labelCodigo = new JLabel("Código do produto: ");
+	private JTextField valorCodigo;
+	private JLabel labelQuantidade = new JLabel("Quantidade: ");
+	private JTextField valorQuantidade;
+	
+	
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

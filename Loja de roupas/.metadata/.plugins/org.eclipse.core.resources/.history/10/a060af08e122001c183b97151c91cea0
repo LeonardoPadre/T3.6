@@ -1,0 +1,13 @@
+package view;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class TelaQuantidade {
+	private JFrame janela = new JFrame();
+	private JLabel titulo;
+	private JTextField qnt;
+	private JButton botaoAdicionar = new JButton("Adicionar");
+}

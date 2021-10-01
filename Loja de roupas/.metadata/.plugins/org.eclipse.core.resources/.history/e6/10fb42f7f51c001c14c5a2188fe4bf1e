@@ -1,0 +1,63 @@
+package view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import modelo.Produto;
+
+public class TelaDetalheEstoque implements ActionListener {
+	private JFrame janela;
+	private JLabel labelNome = new JLabel("Nome: ");
+	private JTextField valorNome;
+	private JLabel labelCodigo = new JLabel("Código do produto: ");
+	private JTextField valorCodigo;
+	private JLabel labelQuantidade = new JLabel("Quantidade: ");
+	private JTextField valorQuantidade;
+	private JButton botaoZerar = new JButton("Zerar");
+	private JButton botaoSalvar = new JButton("Salvar");
+	private String s;
+	
+	int posicao;
+	int opcao;
+	
+	public void inserirEditar(int op, int pos) {
+		if (op == 1) s = "Cadastro de Produto";
+		if (op == 2) s = "Detalhe de Produto";
+		janela = new JFrame(s);
+		Produto p = new Produto();
+		
+		opcao = op;
+		posicao = pos;
+		
+		if (op == 1) { //Sem dados
+			valorNome = new JTextField(25);
+			valorCodigo = new JTextField(25);
+			valorQuantidade = new JTextField(25);
+		}
+		
+		else if (op == 2) { //Com dados
+			valorNome = new JTextField(p.getNome(pos), 25);
+			valorPreco = new JTextField(String.valueOf(p.getPreco(pos)), 25);
+			valorMarca = new JTextField(p.getMarca(pos), 25);
+			valorGen = new JTextField(p.getGenero(pos), 25);
+			valorCat = new JTextField(p.getCategoria(pos), 25);
+			valorCod = new JTextField(p.getCodigo(pos), 5);
+			valorDes = new JTextArea(p.getDesc(pos));
+			
+			botaoExcluir.setBounds(65, 420, 115, 30);
+			janela.add(botaoExcluir);
+			
+		}
+	
+	}
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

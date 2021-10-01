@@ -1,0 +1,61 @@
+package view;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import modelo.Estoque;
+import modelo.Produto;
+
+public class TelaDetalheEstoque implements ActionListener {
+	private JFrame janela;
+	private JLabel labelNome = new JLabel("Nome: ");
+	private JTextField valorNome;
+	private JLabel labelCodigo = new JLabel("Código do produto: ");
+	private JTextField valorCodigo;
+	private JLabel labelQuantidade = new JLabel("Quantidade: ");
+	private JTextField valorQuantidade;
+	private JButton botaoZerar = new JButton("Zerar");
+	private JButton botaoSalvar = new JButton("Salvar");
+	private String s;
+	
+	int posicao;
+	int opcao;
+	
+	public void inserirEditar(int op, int pos) {
+		if (op == 1) s = "Cadastro de Produto";
+		if (op == 2) s = "Detalhe de Produto";
+		janela = new JFrame(s);
+		Produto p = new Produto();
+		Estoque e = new Estoque();
+		
+		opcao = op;
+		posicao = pos;
+		
+		if (op == 2) { //Com dados
+			valorNome = new JTextField(p.getNome(pos), 25);
+			valorCodigo = new JTextField(p.getCodigo(pos), 5);
+			valorQuantidade = new JTextField(String.valueOf(e.getEstoque(pos)), 5);
+			
+			botaoZerar.setBounds(65, 420, 115, 30);
+			janela.add(botaoZerar);
+			
+		}
+		
+		labelNome.setBounds(30, 20, 150, 25);
+		valorNome.setBounds(180, 20, 180, 25);
+		labelCodigo.setBounds(30, 50, 150, 25);
+		valorCodigo.setBounds(180, 50, 180, 25);
+		labelQuantidade.setBounds(30, 80, 150, 25);
+		valorQuantidade.setBounds(180, 80, 180, 25);
+	
+	}
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

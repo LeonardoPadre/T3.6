@@ -1,0 +1,68 @@
+package modelo;
+
+import java.util.ArrayList;
+
+public class Venda {
+	private String nomeP;
+	private String nomeC;
+	private String nomeF;
+	private String codVenda;
+	private double custoFinal;
+	private int qntVendido;
+	
+	public static ArrayList<String> Venda = new ArrayList<String>() { //Código da Venda, Cliente, Funcionario, Produto, Quantidade, Custo Final, ... , * , Código da Venda 2, ...
+		private static final long serialVersionUID = 1L;
+		{
+			add("*"); add("V00001"); add(Cliente.clienteN.get(0)); add(Funcionario.funcionarioN.get(0)); add(Produto.produtoN.get(0)); add("2"); add("200.00"); add("*"); 
+			add("V00002"); add(Cliente.clienteN.get(1)); add(Funcionario.funcionarioN.get(1)); add(Produto.produtoN.get(1)); add("4"); add(Produto.produtoN.get(3)); add("1"); add("2500.00"); add("*");
+			add("V00003"); add(Cliente.clienteN.get(2)); add(Funcionario.funcionarioN.get(2)); add(Produto.produtoN.get(2)); add("5"); add(Produto.produtoN.get(9)); add("5"); add(Produto.produtoN.get(5)); add("3"); add("7849.95"); add("*");
+			add("V00004"); add(Cliente.clienteN.get(3)); add(Funcionario.funcionarioN.get(3)); add(Produto.produtoN.get(3)); add("2"); add(Produto.produtoN.get(5)); add("10"); add(Produto.produtoN.get(3)); add("5"); add(Produto.produtoN.get(0)); add("2"); add("10700.00"); add("*");
+			add("V00005"); add(Cliente.clienteN.get(4)); add(Funcionario.funcionarioN.get(4)); add(Produto.produtoN.get(4)); add("3"); add(Produto.produtoN.get(0)); add("8"); add("3057.70"); add("*");
+			add("V00006"); add(Cliente.clienteN.get(5)); add(Funcionario.funcionarioN.get(5)); add(Produto.produtoN.get(5)); add("1"); add(Produto.produtoN.get(3)); add("9"); add(Produto.produtoN.get(9)); add("1"); add("5350.00"); add("*");
+		}
+	};	
+	
+	public String toString() {
+		return "Venda: " + codVenda + " || " + qntVendido + " x " + nomeP + " || Valor: " + custoFinal +
+				" || Vendedor: " + nomeF + " || Cliente: " + nomeC;
+	}
+	
+	public Venda(String cv, int qv, String np, double cf, String nf, String nc) {
+		codVenda = cv;
+		qntVendido = qv;
+		nomeP = np;
+		custoFinal = cf;
+		nomeF = nf;
+		nomeC = nc;
+	}
+	
+	public Venda() {
+		
+	}
+	
+	public ArrayList<String> getProdutosVendidos(String cod) {
+		ArrayList<String> aux = new ArrayList<String>();
+		int pos = 0;
+		int pos2 = 0;
+		
+		for(int i = 0; i < Venda.size(); i++) { //Pega a posição da venda na lista de venda
+			if(Venda.get(i) == cod) {
+				pos = i;
+			}
+		}
+		
+		for(int i = pos; i < Venda.size(); i++) { //Pega a area da venda na lista
+			if(Venda.get(i) == "*") {
+				pos2 = i;
+			}
+		}
+		
+		for(int j = 0; j < Produto.produtoN.size(); j++) {
+			for(int i = pos; i <= pos2; i++) {
+				if(Venda.get(i) == Produto.produtoN.get(j)) {
+					
+				}
+			}
+		}
+	}
+}

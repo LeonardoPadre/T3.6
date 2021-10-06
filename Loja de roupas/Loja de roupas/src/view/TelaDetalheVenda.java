@@ -19,6 +19,7 @@ import controle.ControleFuncionario;
 import controle.ControleProduto;
 import controle.ControleVenda;
 import modelo.Cliente;
+import modelo.Estoque;
 import modelo.Funcionario;
 import modelo.Produto;
 import modelo.Venda;
@@ -45,8 +46,6 @@ public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 	private JButton botaoAdicionar = new JButton("Adicionar");
 	private JList<String> listaFuncionariosCadastrados;
 	private JList<String> listaProdutosCadastrados;
-	
-	private static ArrayList<String> auxiliar = new ArrayList<String>();
 	
 	private static Double precofinal = 0.0;
 	int posicao;
@@ -221,6 +220,8 @@ public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 		}
 	}
 	
+	static ArrayList<String> auxiliar = new ArrayList<String>();
+	
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		Venda v = new Venda();
@@ -233,20 +234,27 @@ public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 		
 		if(src == botaoProximo) {
 			auxiliar.add(Double.toString(precofinal));
-			Venda.vendas.add(auxiliar);
+			precofinal = 0.0;
+			Venda.vendas.add((ArrayList<String>) auxiliar.clone());
+			System.out.println(auxiliar);
+			auxiliar.clear();
 			new TelaDetalheVenda().inserirEditar(6, 0);
 			janela.dispose();
 		}
 		
 		if(src == botaoAdicionar) {
+			int quantidade = Estoque.estoque.get(posicao) - Integer.valueOf(qnt.getText()).intValue();
 			precofinal = (p.getPreco(posicao) * Integer.valueOf(qnt.getText()).intValue()) + precofinal;
 			auxiliar.add(Produto.produtoN.get(posicao));
 			auxiliar.add(qnt.getText());
+			Estoque.estoque.set(posicao, quantidade);
+			quantidade = 0;
 			janela.dispose();
 		}
 		
 		if(src == botaoConcluir) {
 			Venda.codigoVenda.add(cod.getText());
+			System.out.println(Venda.vendas);
 			janela.dispose();
 		}
 		

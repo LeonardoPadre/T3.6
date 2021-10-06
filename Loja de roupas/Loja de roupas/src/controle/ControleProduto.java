@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import modelo.Produto;
 
 public class ControleProduto {
-	public ArrayList<String> aux = new ArrayList<String>();
+	public ArrayList<String> cp = new ArrayList<String>();
 	
 	public String[] getNomeProduto() {
 		for(int i = 0; i < Produto.produtoN.size(); i++) {
-			aux.add(Produto.produtoN.get(i));
+			cp.add(Produto.produtoN.get(i));
 		}
 
-		String[] s = new String[aux.size()];
-		for(int i = 0; i < aux.size(); i++) {
-			s[i] = aux.get(i);
+		String[] s = new String[cp.size()];
+		for(int i = 0; i < cp.size(); i++) {
+			s[i] = cp.get(i);
 		}
 		
 		return s;

@@ -3,15 +3,18 @@
     <fullyQualifiedTypeName name="TP3.Estoque"/>
     <fullyQualifiedTypeName name="javax.swing.JFormattedTextField"/>
     <fullyQualifiedTypeName name="javax.swing.text.MaskFormatter"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
-    <fullyQualifiedTypeName name="modelo.Funcionario"/>
     <fullyQualifiedTypeName name="modelo.Estoque"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
-    <fullyQualifiedTypeName name="javax.swing.event.ListSelectionListener"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="controle.ControleVenda"/>
     <fullyQualifiedTypeName name="modelo.Venda"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="modelo.Cliente"/>
+    <fullyQualifiedTypeName name="modelo.Funcionario"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="modelo.Produto"/>
+    <fullyQualifiedTypeName name="javax.swing.event.ListSelectionListener"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

@@ -7,17 +7,17 @@ import modelo.Venda;
 
 public class ControleVenda {
 	Venda v = new Venda();
-	public ArrayList<String> aux = new ArrayList<String>();
-	public ArrayList<String> aux2 = new ArrayList<String>();
+	public ArrayList<String> cv = new ArrayList<String>();
+	public ArrayList<String> cv2 = new ArrayList<String>();
 	
 	public String[] getCodVenda() {
 		for(int i = 0; i < Venda.codigoVenda.size(); i++) {
-			aux.add(Venda.codigoVenda.get(i));
+			cv.add(Venda.codigoVenda.get(i));
 		}
 		
-		String[] s = new String[aux.size()];
-		for(int i = 0; i < aux.size(); i++) {
-			s[i] = aux.get(i);
+		String[] s = new String[cv.size()];
+		for(int i = 0; i < cv.size(); i++) {
+			s[i] = cv.get(i);
 		}
 		
 		return s;
@@ -25,12 +25,12 @@ public class ControleVenda {
 	
 	public String[] getProVenda(int pos) {
 		for(int i = 0; i < v.getProdutosVendidos(pos).size(); i++) {
-			aux2.add(v.getProdutosVendidos(pos).get(i));
+			cv2.add(v.getProdutosVendidos(pos).get(i));
 		}
 		
-		String[] s = new String[aux2.size()];
-		for(int i = 0; i < aux2.size(); i++) {
-			s[i] = aux2.get(i);
+		String[] s = new String[cv2.size()];
+		for(int i = 0; i < cv2.size(); i++) {
+			s[i] = cv2.get(i);
 		}
 		
 		return s;

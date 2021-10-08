@@ -1,0 +1,63 @@
+package controle;
+
+import java.util.ArrayList;
+
+import modelo.Produto;
+
+public class ControleProduto {
+	public ArrayList<String> cp = new ArrayList<String>();
+	public ArrayList<Double> aux = new ArrayList<Double>();
+	public ArrayList<Integer> idc = new ArrayList<Integer>();
+	
+	public String[] getNomeProduto() {
+		for(int i = 0; i < Produto.produtoN.size(); i++) {
+			cp.add(Produto.produtoN.get(i));
+		}
+
+		String[] s = new String[cp.size()];
+		for(int i = 0; i < cp.size(); i++) {
+			s[i] = cp.get(i);
+		}
+		return s;
+	}
+	
+	public String[] getProdutoN() {
+		String[] s = new String[Produto.produtoN.size()];
+		for(int i = 0; i < Produto.produtoN.size(); i++) {
+			s[i] = Produto.produtoN.get(i);
+		}
+		
+		return s;
+	}
+	
+	public String[] filtroProduto(int opc) {
+		String[] s = new String[0];
+		for(int i = 0; i < Produto.produtoP.size(); i++) {
+			aux.add(Produto.produtoP.get(i));
+		}
+		
+		
+		switch (opc) {
+			case 1:
+				aux.sort(null);
+				for(int i = 0; i < aux.size(); i++) {
+					for(int j = 0; j < Produto.produtoP.size(); j++) {
+						if(aux.get(i) == Produto.produtoP.get(j)) {
+							idc.add(j);
+						}
+					}
+				}
+				
+				String[] s = new String[idc.size()];
+				for(int i = 0; i < idc.size(); i++) {
+					s[i] = Produto.produtoN.get(idc.get(i));
+				}
+				break;
+			case 2:
+				
+				break;
+				
+			return s;
+		}
+	}
+}

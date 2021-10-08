@@ -26,13 +26,13 @@ public class Produto {
 	public static ArrayList<Double> produtoP = new ArrayList<Double>() {
 		private static final long serialVersionUID = 1L;
 		{
-			add(100.0); add(500.0); add(999.99); add(500.0); add(750.9); add(700.0); add(699.99); add(1999.99); add(4000.0); add(150.0); add(400.0);
+			add(100.0); add(500.0); add(999.99); add(500.0); add(750.9); add(700.0); add(699.99); add(1999.99); add(4000.0); add(150.0);
 		}
 	};
 	public static ArrayList<String> produtoM = new ArrayList<String>() {
 		private static final long serialVersionUID = 1L;
 		{
-			add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike");
+			add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike"); add("Nike");
 		}
 	};
 	public static ArrayList<String> produtoD = new ArrayList<String>() {

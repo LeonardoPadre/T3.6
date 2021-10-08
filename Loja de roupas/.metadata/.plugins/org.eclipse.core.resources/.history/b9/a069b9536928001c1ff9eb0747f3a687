@@ -1,0 +1,45 @@
+package teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import controle.Validador;
+
+public class TesteValidador {
+	Validador v = new Validador();
+	
+	@Test
+	public void testValidaPreco() {
+		assertTrue(v.validaPreco(100));
+		assertTrue(v.validaPreco(1000000));
+		assertFalse(v.validaPreco(-1));
+		assertFalse(v.validaPreco(0));
+	}
+
+	@Test
+	public void testValidaCPF() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testValidaData() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testValidaTelefone() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testValidaEmail() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testValidaQuantidade() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Responsável pelo menu principal do programa
+ * @author Leo
+ * @version 1.0 (Out 2021
+ */
 public class TelaMenu implements ActionListener {
 	private static JFrame janela = new JFrame("Loja de roupas");
 	private static JLabel titulo = new JLabel("Menu Principal");

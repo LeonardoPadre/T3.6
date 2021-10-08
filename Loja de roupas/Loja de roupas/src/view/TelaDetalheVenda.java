@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -18,12 +19,18 @@ import controle.ControleCliente;
 import controle.ControleFuncionario;
 import controle.ControleProduto;
 import controle.ControleVenda;
+import controle.Validador;
 import modelo.Cliente;
 import modelo.Estoque;
 import modelo.Funcionario;
 import modelo.Produto;
 import modelo.Venda;
 
+/**
+ * Responsável por mostrar a tela referente a venda de forma mais detalhada
+ * @author Leo
+ * @version 1.0 (Out 2021)
+ */
 public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 	
 	private JFrame janela = new JFrame();
@@ -51,6 +58,11 @@ public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 	int posicao;
 	int opcao;
 	
+	/**
+	 * Faz a escolha de mostrar as informações da venda de forma mais detalhada ou cadastrar uma nova venda com base nos dois parametros
+	 * @param op
+	 * @param pos
+	 */
 	public void inserirEditar(int op, int pos) {
 		
 		opcao = op;
@@ -226,6 +238,7 @@ public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 		Venda v = new Venda();
 		Produto p = new Produto();
+		Validador va = new Validador();
 		
 		if(src == botaoExcluir) {
 			v.delVenda(posicao);
@@ -236,25 +249,28 @@ public class TelaDetalheVenda implements ActionListener, ListSelectionListener {
 			auxiliar.add(Double.toString(precofinal));
 			precofinal = 0.0;
 			Venda.vendas.add((ArrayList<String>) auxiliar.clone());
-			System.out.println(auxiliar);
 			auxiliar.clear();
 			new TelaDetalheVenda().inserirEditar(6, 0);
 			janela.dispose();
 		}
 		
 		if(src == botaoAdicionar) {
-			int quantidade = Estoque.estoque.get(posicao) - Integer.valueOf(qnt.getText()).intValue();
-			precofinal = (p.getPreco(posicao) * Integer.valueOf(qnt.getText()).intValue()) + precofinal;
-			auxiliar.add(Produto.produtoN.get(posicao));
-			auxiliar.add(qnt.getText());
-			Estoque.estoque.set(posicao, quantidade);
-			quantidade = 0;
+			if(va.validaQuantidade(Integer.valueOf(qnt.getText()).intValue(), posicao)) {
+				int quantidade = Estoque.estoque.get(posicao) - Integer.valueOf(qnt.getText()).intValue();
+				precofinal = (p.getPreco(posicao) * Integer.valueOf(qnt.getText()).intValue()) + precofinal;
+				auxiliar.add(Produto.produtoN.get(posicao));
+				auxiliar.add(qnt.getText());
+				Estoque.estoque.set(posicao, quantidade);
+				quantidade = 0;
+			} else {
+				JOptionPane.showMessageDialog(null,"Não existe quantidade suficiente desse produto", null, 
+						JOptionPane.ERROR_MESSAGE);
+			}
 			janela.dispose();
 		}
 		
 		if(src == botaoConcluir) {
 			Venda.codigoVenda.add(cod.getText());
-			System.out.println(Venda.vendas);
 			janela.dispose();
 		}
 		

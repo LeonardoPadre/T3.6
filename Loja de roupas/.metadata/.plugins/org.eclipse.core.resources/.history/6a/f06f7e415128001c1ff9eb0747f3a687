@@ -1,0 +1,14 @@
+package teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TesteControleProduto {
+
+	@Test
+	public void testFiltroProduto() {
+		fail("Not yet implemented");
+	}
+
+}

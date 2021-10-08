@@ -19,7 +19,11 @@ import modelo.Funcionario;
 import modelo.Produto;
 import modelo.Venda;
 
-
+/**
+ * Responsável por mostrar a lista de produtos, clientes, funcionario, venda e estoque
+ * @author Leo
+ *
+ */
 public class TelaSelecionada implements ActionListener, ListSelectionListener{
 	private JFrame janela;
 	private JLabel titulo;
@@ -49,6 +53,10 @@ public class TelaSelecionada implements ActionListener, ListSelectionListener{
 	
 	int opcao;
 	
+	/**
+	 * Responsável por selecionar qual lista mostrar a partir do parametro recebido
+	 * @param opc
+	 */
 	public void mostrarDados(int opc) {
 		opcao = opc;
 		

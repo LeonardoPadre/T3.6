@@ -5,13 +5,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controle.ControleProduto;
+import controle.Validador;
 import modelo.Estoque;
 import modelo.Produto;
 
+/**
+ * Responsável por mostrar a tela referente ao produto de forma mais detalhada
+ * @author Leo
+ * @version 1.0 (Out 2021)
+ */
 public class TelaDetalheProduto implements ActionListener {
 	
 	private JFrame janela;
@@ -37,6 +44,11 @@ public class TelaDetalheProduto implements ActionListener {
 	int posicao;
 	int opcao;
 	
+	/**
+	 * Faz a escolha de mostrar as informações do produto de forma mais detalhada ou cadastrar um novo produto com base nos dois parametros
+	 * @param op
+	 * @param pos
+	 */
 	public void inserirEditar(int op, int pos) {
 		if (op == 1) s = "Cadastro de Produto";
 		if (op == 2) s = "Detalhe de Produto";
@@ -149,17 +161,23 @@ public class TelaDetalheProduto implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		Produto p = new Produto();
+		Validador v = new Validador();
 		
-		if(src == botaoSalvar) {
+		if(src == botaoSalvar) {	
 			if(opcao == 1) { //Novo
-				Produto.produtoN.add(valorNome.getText());
-				Produto.produtoCo.add(valorCod.getText());
-				Produto.produtoP.add(Double.valueOf(valorPreco.getText()).doubleValue());
-				Produto.produtoM.add(valorMarca.getText());
-				Produto.produtoD.add(valorDes.getText());
-				Produto.produtoCa.add(valorCat.getText());
-				Produto.produtoG.add(valorGen.getText());
-				Estoque.estoque.add(0);
+				if(v.validaPreco(Double.valueOf(valorPreco.getText()).doubleValue())) {
+					Produto.produtoN.add(valorNome.getText());
+					Produto.produtoCo.add(valorCod.getText());
+					Produto.produtoP.add(Double.valueOf(valorPreco.getText()).doubleValue());
+					Produto.produtoM.add(valorMarca.getText());
+					Produto.produtoD.add(valorDes.getText());
+					Produto.produtoCa.add(valorCat.getText());
+					Produto.produtoG.add(valorGen.getText());
+					Estoque.estoque.add(0);
+				} else {
+					JOptionPane.showMessageDialog(null,"Preço Inválido!", null, 
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 			if(opcao == 2) { //Editar
 				p.editNome(p.getNome(posicao), valorNome.getText());

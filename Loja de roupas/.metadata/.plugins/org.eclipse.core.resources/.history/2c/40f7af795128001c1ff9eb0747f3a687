@@ -1,0 +1,17 @@
+package teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import controle.ControleProduto;
+
+public class TesteControleProduto {
+	ControleProduto cp = new ControleProduto();
+	
+	@Test
+	public void testFiltroProduto() {
+		assertTrue(cp.filtroProduto(1));
+	}
+
+}

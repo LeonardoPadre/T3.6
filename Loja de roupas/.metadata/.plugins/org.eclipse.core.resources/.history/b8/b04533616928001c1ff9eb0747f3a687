@@ -1,0 +1,60 @@
+package teste;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import controle.Validador;
+
+public class TesteValidador {
+	Validador v = new Validador();
+	
+	@Test
+	public void testValidaPreco() {
+		assertTrue(v.validaPreco(100));
+		assertTrue(v.validaPreco(1000000));
+		assertFalse(v.validaPreco(-1));
+		assertFalse(v.validaPreco(0));
+	}
+
+	@Test
+	public void testValidaCPF() {
+		assertTrue(v.validaCPF("05802361107"));
+		assertTrue(v.validaCPF(1000000));
+		assertFalse(v.validaCPF(-1));
+		assertFalse(v.validaCPF(0));
+	}
+
+	@Test
+	public void testValidaData() {
+		assertTrue(v.validaPreco(100));
+		assertTrue(v.validaPreco(1000000));
+		assertFalse(v.validaPreco(-1));
+		assertFalse(v.validaPreco(0));
+	}
+
+	@Test
+	public void testValidaTelefone() {
+		assertTrue(v.validaPreco(100));
+		assertTrue(v.validaPreco(1000000));
+		assertFalse(v.validaPreco(-1));
+		assertFalse(v.validaPreco(0));
+	}
+
+	@Test
+	public void testValidaEmail() {
+		assertTrue(v.validaPreco(100));
+		assertTrue(v.validaPreco(1000000));
+		assertFalse(v.validaPreco(-1));
+		assertFalse(v.validaPreco(0));
+	}
+
+	@Test
+	public void testValidaQuantidade() {
+		assertTrue(v.validaPreco(100));
+		assertTrue(v.validaPreco(1000000));
+		assertFalse(v.validaPreco(-1));
+		assertFalse(v.validaPreco(0));
+	}
+
+}

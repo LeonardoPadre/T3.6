@@ -6,9 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import controle.Validador;
 import modelo.Funcionario;
 
+/**
+ * Responsável por mostrar a tela referente ao funcionario de forma mais detalhada
+ * @author Leo
+ * @version 1.0 (Out 2021)
+ */
 public class TelaDetalheFuncionario implements ActionListener {
 	
 	private JFrame janela;
@@ -33,6 +41,11 @@ public class TelaDetalheFuncionario implements ActionListener {
 	int posicao;
 	int opcao;
 	
+	/**
+	 * Faz a escolha de mostrar as informações do funcionario de forma mais detalhada ou cadastrar um novo funcionario com base nos dois parametros
+	 * @param op
+	 * @param pos
+	 */
 	public void inserirEditar(int op, int pos) {
 		if (op == 1) s = "Cadastro do Funcionário";
 		if (op == 2) s = "Detalhe do Funcionário";
@@ -105,16 +118,27 @@ public class TelaDetalheFuncionario implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		Funcionario f = new Funcionario();
+		Validador v = new Validador();
 		
 		if(src == botaoSalvar) {
 			if(opcao == 1) { //Novo
-				Funcionario.funcionarioN.add(valorNome.getText());
-				Funcionario.funcionarioF.add(valorFunc.getText());
-				Funcionario.funcionarioD.add(valorData.getText());
-				Funcionario.funcionarioG.add(valorGen.getText());
-				Funcionario.funcionarioC.add(valorCPF.getText());
-				Funcionario.funcionarioT.add(valorTelefone.getText());
-				Funcionario.funcionarioE.add(valorEnd.getText());
+				if(v.validaCPF(valorCPF.getText()) && v.validaData(valorData.getText()) && v.validaTelefone(valorTelefone.getText())) {
+					Funcionario.funcionarioN.add(valorNome.getText());
+					Funcionario.funcionarioF.add(valorFunc.getText());
+					Funcionario.funcionarioD.add(valorData.getText());
+					Funcionario.funcionarioG.add(valorGen.getText());
+					Funcionario.funcionarioC.add(valorCPF.getText());
+					Funcionario.funcionarioT.add(valorTelefone.getText());
+					Funcionario.funcionarioE.add(valorEnd.getText());
+				} else {
+					JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
+							+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
+							+ "1. Nem todos os campos foram preenchidos \n"
+							+ "2. CPF ou Telefone não contém apenas números \n"
+							+ "3. Data Inválida", null, 
+							JOptionPane.ERROR_MESSAGE);
+				}
+				janela.dispose();
 			}
 			if(opcao == 2) { //Editar
 				f.editNome(f.getNome(posicao), valorNome.getText());

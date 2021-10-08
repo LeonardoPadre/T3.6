@@ -1,0 +1,23 @@
+package controle;
+
+public class Validador {
+	public boolean validaPreco() {
+		return false;
+	}
+	
+	public boolean validaCPF() {
+		return false;
+	}
+	
+	public boolean validaData() {
+		return false;
+	}
+	
+	public boolean validaTelefone() {
+		return false;
+	}
+	
+	public boolean validaEmail() {
+		return false;
+	}
+}

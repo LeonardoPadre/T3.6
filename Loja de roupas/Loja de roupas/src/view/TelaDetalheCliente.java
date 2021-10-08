@@ -5,10 +5,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controle.Validador;
 import modelo.Cliente;
 
+/**
+ * Responsável por mostrar a tela referente ao cliente de forma mais detalhada
+ * @author Leo
+ * @version 1.0 (Out 2021)
+ */
 public class TelaDetalheCliente implements ActionListener {
 
 	private JFrame janela;
@@ -27,6 +34,11 @@ public class TelaDetalheCliente implements ActionListener {
 	int posicao;
 	int opcao;
 	
+	/**
+	 * Faz a escolha de mostrar as informações do cliente de forma mais detalhada ou cadastrar um novo cliente com base nos dois parametros
+	 * @param op
+	 * @param pos
+	 */
 	public void inserirEditar(int op, int pos) {
 		if (op == 1) s = "Cadastro de Cliente";
 		if (op == 2) s = "Detalhe de Cliente";
@@ -87,13 +99,24 @@ public class TelaDetalheCliente implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		Cliente c = new Cliente();
+		Validador v = new Validador();
 		
 		if(src == botaoSalvar) {
 			if(opcao == 1) { //Novo
-				Cliente.clienteN.add(valorNome.getText());
-				Cliente.clienteC.add(valorCPF.getText());
-				Cliente.clienteT.add(valorTelefone.getText());
-				Cliente.clienteE.add(valorEmail.getText());
+				if(v.validaCPF(valorCPF.getText()) && v.validaEmail(valorEmail.getText()) && v.validaTelefone(valorTelefone.getText())) {
+					Cliente.clienteN.add(valorNome.getText());
+					Cliente.clienteC.add(valorCPF.getText());
+					Cliente.clienteT.add(valorTelefone.getText());
+					Cliente.clienteE.add(valorEmail.getText());
+				} else {
+					JOptionPane.showMessageDialog(null,"ERRO AO SALVAR OS DADOS!\n "
+							+ "Pode ter ocorrido um dos erros a seguir:  \n"
+							+ "1. Nem todos os campos foram preenchidos \n"
+							+ "2. CPF, Telefone não contém apenas números \n"
+							+ "3. Email inválido", null, 
+							JOptionPane.ERROR_MESSAGE);
+				}
+				janela.dispose();
 			}
 			if(opcao == 2) { //Editar
 				c.editNome(c.getNome(posicao), valorNome.getText());

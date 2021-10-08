@@ -1,0 +1,15 @@
+package teste;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+import view.*;
+
+public class TesteDetalheProduto {
+	
+	
+	@Test
+	public void test() {
+		assertEquals(2, 1+1);
+	}
+
+}

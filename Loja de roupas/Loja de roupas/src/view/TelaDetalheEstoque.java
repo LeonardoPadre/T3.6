@@ -11,6 +11,11 @@ import javax.swing.JTextField;
 import modelo.Estoque;
 import modelo.Produto;
 
+/**
+ * Responsável por mostrar a tela referente ao estoque de forma mais detalhada
+ * @author Leo
+ * @version 1.0 (Out 2021)
+ */
 public class TelaDetalheEstoque implements ActionListener {
 	private JFrame janela = new JFrame("Estoque");
 	private JLabel labelNome = new JLabel("Nome: ");
@@ -25,6 +30,10 @@ public class TelaDetalheEstoque implements ActionListener {
 	int posicao;
 	int opcao;
 	
+	/**
+	 * Responsável por mostrar a tela de estoque do produto selecionado
+	 * @param pos
+	 */
 	public void inserirEditar(int pos) {
 		Produto p = new Produto();
 		Estoque e = new Estoque();
